@@ -14,11 +14,7 @@ connectDB()
 connectCloudinary()
 
 // middlewares
-app.use(cors({
-    origin: '*', // Cho phép tất cả các nguồn
-    methods: 'GET, POST, PUT, DELETE', // Các phương thức được phép
-    allowedHeaders: 'Content-Type, Authorization', // Các header được phép
-}));
+app.use(cors());
 app.use(express.json()); 
 
 // api endpoints
