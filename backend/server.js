@@ -14,14 +14,17 @@ connectDB()
 connectCloudinary()
 
 // middlewares
-app.use(cors());
+app.use(cors({
+    origin: '*', // Cho phép tất cả các nguồn
+    methods: 'GET, POST, PUT, DELETE', // Các phương thức được phép
+    allowedHeaders: 'Content-Type, Authorization', // Các header được phép
+}));
 app.use(express.json()); 
 
 // api endpoints
 app.use('/api/admin', adminRouter);
 app.use('/api/doctor', doctorRouter);
 app.use('/api/user', userRouter);
-
 
 app.get('/',(req,res) => {
     res.send('API WORKING')
@@ -33,6 +36,4 @@ app.get('/favicon.ico', (req, res) => {
     res.sendFile(path.join(__dirname, 'favicon.ico'));
 });
 
-
-app.listen(port, ()=> console.log("Server Start", port))
-
+app.listen(port, () => console.log(`Server started on port ${port}`));
