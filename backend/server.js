@@ -27,5 +27,12 @@ app.get('/',(req,res) => {
     res.send('API WORKING')
 })
 
+import path from 'path';
+
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'favicon.ico'));
+});
+
+
 app.listen(port, ()=> console.log("Server Start", port))
 
